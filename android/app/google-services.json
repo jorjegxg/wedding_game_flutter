@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "991177390318",
+    "project_id": "weddings-app-1a13a",
+    "storage_bucket": "weddings-app-1a13a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991177390318:android:3891ab4f449e2788441bff",
+        "android_client_info": {
+          "package_name": "com.example.wedding_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "991177390318-g0jerfrqd923t9oar7qht0jon8883buq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wedding_flutter",
+            "certificate_hash": "9f30063cff77609514037d5d76865e45a12afaf4"
+          }
+        },
+        {
+          "client_id": "991177390318-406ublt89i9ah1dta8q70bgbssq4m221.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByWmWp1SHk6Zn3U4BCUs1Cfz3o3dPpqw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "991177390318-406ublt89i9ah1dta8q70bgbssq4m221.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "991177390318-h57tgiumm16oo8o8s1q7euh3r0cm6ikk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.weddingFlutter"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991177390318:android:bf4c94688cd03388441bff",
+        "android_client_info": {
+          "package_name": "com.example.wedding_game_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "991177390318-406ublt89i9ah1dta8q70bgbssq4m221.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByWmWp1SHk6Zn3U4BCUs1Cfz3o3dPpqw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "991177390318-406ublt89i9ah1dta8q70bgbssq4m221.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "991177390318-h57tgiumm16oo8o8s1q7euh3r0cm6ikk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.weddingFlutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
