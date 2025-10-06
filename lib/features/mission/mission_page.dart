@@ -1,19 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:wedding_game_flutter/features/events_page/event.dart';
-import 'package:wedding_game_flutter/features/events_page/widgets/events_modal.dart';
+import 'package:wedding_game_flutter/features/events/event.dart';
+import 'package:wedding_game_flutter/features/events/widgets/events_modal.dart';
+import 'package:wedding_game_flutter/features/mission/mission_modal.dart';
 
-class EventsPage extends StatefulWidget {
-  const EventsPage({super.key});
+class MissionPage extends StatefulWidget {
+  final String eventId;
+
+  const MissionPage({super.key, required this.eventId});
 
   @override
-  State<EventsPage> createState() => _EventsPageState();
+  State<MissionPage> createState() => _MissionPageState();
 }
 
-class _EventsPageState extends State<EventsPage> {
-  Future<List<Event>> _getEvents() async {
+class _MissionPageState extends State<MissionPage> {
+  Future<List<Event>> _getMissions() async {
     final snapshot = await FirebaseFirestore.instance
-        .collection("events")
+        .collection("missions")
         .get();
     final events = snapshot.docs
         .map((doc) => Event.fromMap(doc.data()))
@@ -25,21 +28,21 @@ class _EventsPageState extends State<EventsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Events"), centerTitle: true),
+      appBar: AppBar(title: Text("Missions"), centerTitle: true),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           showModalBottomSheet(
             context: context,
-            builder: (context) => EventsModal(),
+            builder: (context) => MissionModal(),
           );
         },
-        label: Text("Add event"),
+        label: Text("Add mission"),
         icon: Icon(Icons.add),
       ),
       body: RefreshIndicator(
-        onRefresh: () => _getEvents(),
+        onRefresh: () => _getMissions(),
         child: FutureBuilder<List<Event>>(
-          future: _getEvents(),
+          future: _getMissions(),
           builder: (context, asyncSnapshot) {
             if (!asyncSnapshot.hasData) {
               return Text("Loading...");

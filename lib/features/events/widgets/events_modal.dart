@@ -1,5 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
+import 'package:wedding_game_flutter/features/events/event.dart';
 
 class EventsModal extends StatefulWidget {
   const EventsModal({super.key});
@@ -70,12 +73,15 @@ class _EventsModalState extends State<EventsModal> {
   Future<void> _saveEvent(String name, DateTime lastDate) async {
     var db = FirebaseFirestore.instance;
 
-    final event = <String, dynamic>{"name": name, "lastDate": lastDate};
+    var uuid = Uuid();
+    final id = uuid.v4();
+    final event = Event(id: id, name: name, lastDate: lastDate);
 
     db
         .collection("events")
-        .add(event)
-        .then((doc) => {print('Am adaugat documentul ${doc.id}')});
+        .doc(id)
+        .set(event.toMap())
+        .then((doc) => {print('Am adaugat documentul ${id}')});
 
     Navigator.pop(context);
   }

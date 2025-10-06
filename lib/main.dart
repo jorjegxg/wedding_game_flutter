@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:wedding_game_flutter/features/events_page/events_page.dart';
+import 'package:wedding_game_flutter/features/events/events_page.dart';
 import 'package:wedding_game_flutter/firebase_options.dart';
 
 void main() async {
