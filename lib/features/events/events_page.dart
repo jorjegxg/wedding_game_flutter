@@ -43,7 +43,7 @@ class _EventsPageState extends State<EventsPage> {
           future: _getEvents(),
           builder: (context, asyncSnapshot) {
             if (!asyncSnapshot.hasData) {
-              return Text("Loading...");
+              return Center(child: Text("Loading..."));
             }
 
             return ListView.builder(
@@ -64,7 +64,7 @@ class _EventsPageState extends State<EventsPage> {
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
-                      child: Row(children: [Text(event.name)]),
+                      child: Row(children: [Flexible(child: Text(event.name))]),
                     ),
                   ),
                 );

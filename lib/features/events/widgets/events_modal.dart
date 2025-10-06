@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 import 'package:wedding_game_flutter/features/events/event.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class EventsModal extends StatefulWidget {
   const EventsModal({super.key});
@@ -42,6 +43,7 @@ class _EventsModalState extends State<EventsModal> {
         children: [
           TextField(
             onChanged: _ontextFieldChange,
+            autofocus: true,
             decoration: InputDecoration(label: Text("Event name")),
           ),
           Padding(
@@ -75,7 +77,10 @@ class _EventsModalState extends State<EventsModal> {
 
     var uuid = Uuid();
     final id = uuid.v4();
-    final event = Event(id: id, name: name, lastDate: lastDate);
+
+    //Todo: schimba linkul poate
+    final link = "${dotenv.env['URL']}/${id}";
+    final event = Event(id: id, name: name, lastDate: lastDate, link: link);
 
     db
         .collection("events")

@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:wedding_game_flutter/features/mission/mission.dart';
 
 class MissionModal extends StatefulWidget {
-  const MissionModal({super.key});
+  final String eventId;
+  const MissionModal({super.key, required this.eventId});
 
   @override
   State<MissionModal> createState() => _MissionModalState();
@@ -24,12 +25,14 @@ class _MissionModalState extends State<MissionModal> {
         children: [
           TextField(
             onChanged: _ontextFieldChange,
+            autofocus: true,
             decoration: InputDecoration(label: Text("Event name")),
           ),
           Padding(
             padding: const EdgeInsets.all(32.0),
             child: FilledButton(
-              onPressed: () async => _saveMission(textFieldValue),
+              onPressed: () async =>
+                  _saveMission(eventId: widget.eventId, name: textFieldValue),
               child: Text("Save mission"),
             ),
           ),
@@ -38,12 +41,17 @@ class _MissionModalState extends State<MissionModal> {
     );
   }
 
-  Future<void> _saveMission(String name) async {
+  Future<void> _saveMission({
+    required String eventId,
+    required String name,
+  }) async {
     var db = FirebaseFirestore.instance;
 
     final mission = Mission(name: textFieldValue);
 
     db
+        .collection("events")
+        .doc(eventId)
         .collection("missions")
         .add(mission.toMap())
         .then((doc) => {print('Am adaugat documentul ${doc.id}')});
